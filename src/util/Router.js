@@ -5,6 +5,7 @@ class Router {
     this.entryPoint = {
       "/": null,
       "/main": null,
+      "/detail": null,
     };
 
     window.addEventListener("popstate", (e) => {
@@ -16,19 +17,20 @@ class Router {
     this.entryPoint[path] = component;
   }
 
-  link(path) {
+  link(path, option = null) {
     const $Link = document.createElement("li");
     $Link.innerText = path;
     $Link.addEventListener("click", () => {
-      this.to(path);
+      this.to(path, option);
     });
 
     return $Link;
   }
 
-  to(path) {
+  to(path, option = null) {
     window.history.pushState({ Page: path }, "", path);
-    new this.entryPoint[path]({ $target: this.$target, ROUTER: this });
+    if (!option) new this.entryPoint[path]({ $target: this.$target, ROUTER: this });
+    else new this.entryPoint[path]({ $target: this.$target, ROUTER: this, OPTION: option });
   }
 }
 

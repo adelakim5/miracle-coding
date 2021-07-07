@@ -7,7 +7,7 @@ function eventController(...fns) {
         timer = setInterval(() => {
           timer = null;
           fns.forEach((fn) => fn());
-        }, 3000);
+        }, 5000);
       }
     },
   };

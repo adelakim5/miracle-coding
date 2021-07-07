@@ -1,6 +1,7 @@
 import Router from "/util/Router.js";
 import IndexPage from "./pages/IndexPage.js";
 import MainPage from "./pages/MainPage.js";
+import Detail from "./pages/components/Detail.js";
 
 class App {
   constructor({ $target }) {
@@ -10,6 +11,7 @@ class App {
     this.pages = {
       "/": IndexPage,
       "/main": MainPage,
+      "/detail": Detail,
     };
 
     this.setState();
